@@ -69,8 +69,6 @@ def chapter_one() -> None:
         res = None
         while res is None:
             res = world.interaction()
-            if not isinstance(res, Location):
-                res = None
     if res == capsules:
         world.character_enters(roommate)
         roommate.monologue('This ship sucks either way...')
