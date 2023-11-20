@@ -212,12 +212,16 @@ class World:
     #         return (False, 'This character does not want to talk with you.')
     #     return (True, character.hook)
 
+    def assistant(self, text: str| Text) -> None:
+        if self._assistant:
+            console.print(text)
+
     def interaction(self) -> Character | Location | None:
         if self._first_interaction:
             self._prefix_help()
             console.print(
                 'This is your first interaction with the World.',
-                'Would you like some assitance?'
+                'Would you like to enable assitant?'
             )
             expect = ('yes', 'no')
             self._prefix_help()
