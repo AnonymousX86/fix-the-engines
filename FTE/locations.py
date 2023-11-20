@@ -29,3 +29,8 @@ class Location:
         if isinstance(other, Location):
             return self.name == other.name
         return False
+
+    def __ne__(self, other) -> bool:
+        if isinstance(other, Location):
+            return self.name != other.name
+        return True
