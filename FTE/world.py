@@ -244,8 +244,6 @@ class World:
                 ' with the World.',
                 'All commands are single words. For example "help" or' +
                 ' "go" insted of "go to".',
-                # 'You can type "help <command>" (eg. "help go")' +
-                # ' to see it\'s usage and description.',
                 'Have fun! :smile:'
             ):
                 self._prefix_help()
