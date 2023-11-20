@@ -168,7 +168,7 @@ class World:
         location_characters = location_characters[:-1]
         console.print(*location_characters, '.', sep='')
 
-    def _show_all_locations(self) -> None:
+    def _show_other_locations(self) -> None:
         self._prefix()
         other_locations = tuple(filter(lambda l: l != self.location, self._all_locations))
         if (l := len(other_locations)) == 0:
@@ -179,7 +179,7 @@ class World:
         else:
             console.print(f'There are {l} other locations you can go to: ', end='')
         locations: list[str | Text] = []
-        for loc in self._all_locations:
+        for loc in other_locations:
             locations.append(loc.display_name)
             locations.append(', ')
         locations = locations[:-1]
@@ -352,9 +352,24 @@ class World:
                     return None
                 return self._location
             case 'info':
+                if (loc := self.find_location(argument)):
+                    if loc == self.location:
+                        argument = None
+                    else:
+                        self._prefix()
+                        if (i := loc.info):
+                            console.print(i)
+                        else:
+                            console.print('You don\'t know anything about that location.')
+                        return None
                 if not argument:
+                    self._prefix()
+                    if (i := loc.info):
+                        console.print(i)
+                    else:
+                        console.print('You don\'t know anything about this location.')
                     self._show_location_characters()
-                    self._show_all_locations()
+                    self._show_other_locations()
                     return None
                 if (char := self.find_character(argument)):
                     self._prefix()
@@ -368,12 +383,6 @@ class World:
                         self._prefix()
                         console.print(Text.assemble(char.display_name, '-', i))
                     return None
-                if (loc := self.find_location(argument)):
-                    self._prefix()
-                    if (i := loc.info):
-                        console.print(i)
-                    else:
-                        console.print('You don\'t know anything about tat location.')
-                    return None
+
                 self._prefix()
                 console.print('I don\'t know what do you mean.')
