@@ -132,14 +132,17 @@ class World:
     def go_to(
             self,
             location: Location,
-    ) -> tuple[bool, Text]:
+    ) -> bool:
         """Tries to go specifiec `Location`.
            If location didn't change it returns `False`, otherwise `True`.
         """
         if self._location == location:
-            return (False, Text('You\'re currently here.'))
+            console.print('You\'re currently here.')
+            return False
         self._location = location
-        return (True, Text.assemble('You\'re now in ', self.location.display_name, '.'))
+        self._prefix()
+        console.print(Text.assemble('You\'re now in ', self.location.display_name, '.'))
+        return True
 
     # def talk_to(
     #         self,
@@ -224,7 +227,7 @@ class World:
                     self._prefix()
                     console.print('You don\'t know this location.')
                     return None
-                (success, response) = self.go_to(loc)
+                if not self.go_to(loc):
+                    return None
+                return self._location
                 self._prefix()
-                console.print(response)
-                return loc if success else None
