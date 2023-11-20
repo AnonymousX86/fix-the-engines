@@ -2,4 +2,4 @@
 from os import getenv
 
 
-DEBUG: bool = bool(getenv('DEBUG', False))
+DEBUG: bool = bool(int(getenv('DEBUG', 0)))
