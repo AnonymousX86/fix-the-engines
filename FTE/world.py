@@ -75,6 +75,7 @@ class World:
         self._all_locations: tuple[Location] = all_locations
         self._all_characters: tuple[Character] = all_characters
         self._location: Location = starting_location
+        self.fails = 0
 
     @property
     def location(self) -> Location:
@@ -196,7 +197,6 @@ class World:
     #     return (True, character.hook)
 
     def interaction(self) -> Character | Location | None:
-        fails = 0
         query = ''
         while not query:
             try:
@@ -212,18 +212,21 @@ class World:
             [command, argument] = query.split(' ', 1)
         command = commands.get(command)
         if not command:
+            self.fails += 1
             self._prefix()
-            if fails > 3:
-                console.print('Psst, you can use `help`')
+            if self.fails >= 3:
+                console.print('Psst, you can use `help`.')
             else:
-                console.print('I\'m not sure what do you mean')
-                fails += 1
+                console.print('I\'m not sure what do you mean.')
             return None
+        self.fails = 0
         match command.name:
             case 'exit':
+                self._prefix()
                 console.print('Goodbye!')
                 exit()
             case 'help':
+                self._prefix()
                 if not argument:
                     console.print(Text.assemble(
                         'Available commands',
