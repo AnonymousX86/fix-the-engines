@@ -360,9 +360,9 @@ class World:
                     self._prefix()
                     console.print(Text.assemble(
                         char.display_name,
-                        'has',
+                        ' has ',
                         char.standing.color_text,
-                        'standing towards you.'
+                        ' standing towards you.'
                     ))
                     if (i := char.info):
                         self._prefix()
