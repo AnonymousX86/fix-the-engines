@@ -185,32 +185,155 @@ class World:
         locations = locations[:-1]
         console.print(*locations, '.', sep='')
 
-    def go_to(
-            self,
-            location: Location,
-    ) -> bool:
-        """Tries to go specifiec `Location`.
-           If location didn't change it returns `False`, otherwise `True`.
+    def _do_first_interaction(self) -> None:
+        self._prefix_help()
+        console.print(
+            'This is your first interaction with the World.',
+            'Would you like to enable assitant?'
+        )
+        expect = ('yes', 'no')
+        self._prefix_help()
+        query = console.input('')
+        while query.lower() not in expect:
+            self._prefix_help()
+            query = console.input('"yes" or "no"? ')
+        self._first_interaction = False
+        if query == 'no':
+            self._prefix_help()
+            console.print('OK! I won\'t ask you again. Have fun!')
+            return
+        for line in (
+            Text.assemble(
+                Text.assemble('Fix The Engines', style=Style(bold=True)),
+                ' is text-based, paragraph game. There is no mouse control,',
+                ' you operate only with commands.'
+            ),
+            'You can show them by typing "help" during interaction' +
+            ' with the World.',
+            'All commands are single words. For example "help" or' +
+            ' "go" insted of "go to".',
+            'Have fun! :smile:'
+        ):
+            self._prefix_help()
+            console.print(line)
+            if not DEBUG:
+                sleep(2.0)
+        self._assistant = True
+
+    def _command_exit(self) -> None:
+        self._prefix()
+        console.print('Goodbye!')
+        exit()
+
+    def _command_help(self, menu: str = None) -> None:
+        show_commands, show_arguments = False, False
+        if menu == 'commands':
+            show_commands = True
+        elif menu == 'arguments':
+            show_arguments = True
+        else:
+            show_commands, show_arguments = True, True
+        if show_commands:
+            commands_table = Table(
+                title='Available commands',
+                show_lines=True
+            )
+            commands_table.add_column('Command')
+            commands_table.add_column('Description')
+            commands_table.add_column('Usage')
+            for cmd in commands.values():
+                commands_table.add_row(cmd.name, cmd.description, cmd.usage)
+            console.print(commands_table)
+        if show_arguments:
+            arguments_table = Table(title='Arguments description')
+            arguments_table.add_column('Representation')
+            arguments_table.add_column('Description')
+            for line in (
+                ('< ... >', 'Required argument.'),
+                ('( ... )', 'Optional argument.'),
+                ('( a | b )', 'Optional argument, but only "a" or "b".')
+            ):
+                arguments_table.add_row(*line)
+            console.print(arguments_table)
+
+    def _command_talk(self, character_name: str) -> Character | None:
+        """Tries to go specifiec `Character` by `character_name`.
+           If character exists, is in currect `Location` and is `pokable`
+           it returns it, otherwise `None`.
         """
+        if not character_name:
+            self._prefix()
+            console.print('You speak to everyone, but no one hears you.')
+            return None
+        if not self.character_in_global(character_name):
+            self._prefix()
+            console.print('You don\'t know this character.')
+            return None
+        if not self.character_in_location(character_name):
+            self._prefix()
+            console.print('This chracter is not here.')
+            return None
+        char = self.find_character(character_name)
+        if not char.pokable:
+            self._prefix()
+            console.print(Text.assemble(char.display_name, ' does not want to talk with you.'))
+            return None
+        char.monologue(char.poke)
+        return char
+
+    def _command_go(
+            self,
+            location_name: str = None,
+    ) -> Location | None:
+        """Tries to go specifiec `Location` by `location_name`.
+           If location changed it returns it, otherwise `None`.
+        """
+        if not location_name:
+            self._prefix()
+            console.print('After running in circle for a while you find it worthless.')
+            return None
+        if not (location := self.find_location(location_name)):
+            self._prefix()
+            console.print('You don\'t know this location.')
+            return None
         if self._location == location:
             console.print('You\'re currently here.')
-            return False
+            return None
         self._location = location
         self._prefix()
         console.print(Text.assemble('You\'re now in ', self.location.display_name, '.'))
         self._show_location_characters()
-        return True
+        return location
 
-    # def talk_to(
-    #         self,
-    #         character: Character
-    # ) -> tuple(bool, str):
-    #     """Checks if you can talk to the character."""
-    #     if character not in self._characters:
-    #         return (False, 'You can\'t talk to this character.')
-    #     if not character.hookable:
-    #         return (False, 'This character does not want to talk with you.')
-    #     return (True, character.hook)
+    def _command_info(self, name: str = None) -> None:
+        """Shows info about `Location` by `Location.name`
+           or `Character` by `Character.name`.
+        """
+        if not name:
+            name = self._location.name
+        if (loc := self.find_location(name)):
+            self._prefix()
+            if (i := loc.info):
+                console.print(i)
+            else:
+                console.print('You don\'t know anything about this location.')
+            if loc == self._location:
+                self._show_location_characters()
+                self._show_other_locations()
+        elif (char := self.find_character(name)):
+            self._prefix()
+            console.print(Text.assemble(
+                char.display_name,
+                ' has ',
+                char.standing.color_text,
+                ' standing towards you.'
+            ))
+            if (i := char.info):
+                self._prefix()
+                console.print(Text.assemble(char.display_name, '-', i))
+        else:
+            self._prefix()
+            console.print('I don\'t know what do you mean.')
 
     def assistant(self, text: str| Text) -> None:
         if self._assistant:
@@ -218,39 +341,7 @@ class World:
 
     def interaction(self) -> Character | Location | None:
         if self._first_interaction:
-            self._prefix_help()
-            console.print(
-                'This is your first interaction with the World.',
-                'Would you like to enable assitant?'
-            )
-            expect = ('yes', 'no')
-            self._prefix_help()
-            query = console.input('')
-            while query.lower() not in expect:
-                self._prefix_help()
-                query = console.input('"yes" or "no"? ')
-            self._first_interaction = False
-            if query == 'no':
-                self._prefix_help()
-                console.print('OK! I won\'t ask you again. Have fun!')
-                return None
-            for line in (
-                Text.assemble(
-                    Text.assemble('Fix The Engines', style=Style(bold=True)),
-                    ' is text-based, paragraph game. There is no mouse control,',
-                    ' you operate only with commands.'
-                ),
-                'You can show them by typing "help" during interaction' +
-                ' with the World.',
-                'All commands are single words. For example "help" or' +
-                ' "go" insted of "go to".',
-                'Have fun! :smile:'
-            ):
-                self._prefix_help()
-                console.print(line)
-                if not DEBUG:
-                    sleep(2.0)
-            self._assistant = True
+            self._do_first_interaction()
             return None
         query = ''
         while not query:
@@ -283,104 +374,14 @@ class World:
         self._fails = 0
         match command.name:
             case 'exit':
-                self._prefix()
-                console.print('Goodbye!')
-                exit()
+                self._command_exit()
             case 'help':
-                show_commands, show_arguments = False, False
-                if argument == 'commands':
-                    show_commands = True
-                elif argument == 'arguments':
-                    show_arguments = True
-                else:
-                    show_commands, show_arguments = True, True
-                if show_commands:
-                    commands_table = Table(
-                        title='Available commands',
-                        show_lines=True
-                    )
-                    commands_table.add_column('Command')
-                    commands_table.add_column('Description')
-                    commands_table.add_column('Usage')
-                    for cmd in commands.values():
-                        commands_table.add_row(cmd.name, cmd.description, cmd.usage)
-                    console.print(commands_table)
-                if show_arguments:
-                    arguments_table = Table(title='Arguments description')
-                    arguments_table.add_column('Representation')
-                    arguments_table.add_column('Description')
-                    for line in (
-                        ('< ... >', 'Required argument.'),
-                        ('( ... )', 'Optional argument.'),
-                        ('( a | b )', 'Optional argument, but only "a" or "b".')
-                    ):
-                        arguments_table.add_row(*line)
-                    console.print(arguments_table)
+                self._command_help(argument)
                 return None
             case 'talk':
-                if not argument:
-                    self._prefix()
-                    console.print('You speak to everyone, but no one hears you.')
-                    return None
-                if not self.character_in_global(argument):
-                    self._prefix()
-                    console.print('You don\'t know this character.')
-                    return None
-                if not self.character_in_location(argument):
-                    self._prefix()
-                    console.print('This chracter is not here.')
-                    return None
-                char = self.find_character(argument)
-                if not char.pokable:
-                    self._prefix()
-                    console.print(Text.assemble(char.display_name, ' does not want to talk with you.'))
-                    return None
-                char.monologue(char.poke)
-                return char
+                return self._command_talk(argument)
             case 'go':
-                if not argument:
-                    self._prefix()
-                    console.print('After running in circle for a while you find it worthless.')
-                    return None
-                if not (loc := self.find_location(argument)):
-                    self._prefix()
-                    console.print('You don\'t know this location.')
-                    return None
-                if not self.go_to(loc):
-                    return None
-                return self._location
+                return self._command_go(argument)
             case 'info':
-                if (loc := self.find_location(argument)):
-                    if loc == self.location:
-                        argument = None
-                    else:
-                        self._prefix()
-                        if (i := loc.info):
-                            console.print(i)
-                        else:
-                            console.print('You don\'t know anything about that location.')
-                        return None
-                if not argument:
-                    self._prefix()
-                    if (i := loc.info):
-                        console.print(i)
-                    else:
-                        console.print('You don\'t know anything about this location.')
-                    self._show_location_characters()
-                    self._show_other_locations()
-                    return None
-                if (char := self.find_character(argument)):
-                    self._prefix()
-                    console.print(Text.assemble(
-                        char.display_name,
-                        ' has ',
-                        char.standing.color_text,
-                        ' standing towards you.'
-                    ))
-                    if (i := char.info):
-                        self._prefix()
-                        console.print(Text.assemble(char.display_name, '-', i))
-                    return None
-
-                self._prefix()
-                console.print('I don\'t know what do you mean.')
+                self._command_info(argument)
+                return None
