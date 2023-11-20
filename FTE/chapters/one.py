@@ -24,7 +24,8 @@ def chapter_one() -> None:
     world = World(
         all_locations=(bridge, capsules, engine_deck, quarters),
         all_characters=(roommate, capitan, pilot, engineer),
-        starting_location=quarters
+        starting_location=quarters,
+        first_interaction=True
     )
 
     console.clear()

@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
+from time import sleep
+
 from rich.style import Style
+from rich.table import Table
 from rich.text import Text
 
 from FTE.console import console
 from FTE.characters import Character
 from FTE.locations import Location
+from FTE.settings import DEBUG
 
 
 class UnknownCommand(BaseException):
@@ -23,16 +27,19 @@ class Command:
     def __init__(
             self,
             name: str,
-            brief: str,
-            description: str = None
+            description: str = None,
+            *,
+            usage: str = None
     ) -> None:
         self.name: str = name
-        self.brief: str = brief
-        self._description: str = description
+        self.description: str = description
+        self._usage: str = usage or ''
 
     @property
-    def description(self) -> str:
-        return self._description or self._brief
+    def usage(self) -> str:
+        if not self._usage:
+            return self.name
+        return f'{self.name} {self._usage}'
 
 
 commands: dict[str, Command] = dict(
@@ -42,25 +49,27 @@ commands: dict[str, Command] = dict(
     ),
     help = Command(
         'help',
-        'Shows help.',
-        'Shows how to use specific command. What more did you expect?'
+        'Shows help. Optionally only "commands" or "arguments".',
+        usage='("commands" | "arguments")'
     ),
     talk = Command(
         'talk',
-        'Talk to someone.',
-        'Pass character name to start conversation with them.' +
-        ' You can talk only to characters in your location.'
+        'Talk to someone.' +
+        ' Pass character name to start conversation with them.' +
+        ' You can talk only to characters in your location.',
+        usage='<character name>'
     ),
     go = Command(
         'go',
-        'Go somewhere.',
-        'Pass location name to go there.'
+        'Go somewhere.' +
+        ' Pass location name to go there.',
+        usage='<location name>'
     ),
     info = Command(
         'info',
-        'Get information about a character or a place.',
-        'Pass character or location name to get information about what' +
-        'do you know about the subject.'
+        'Get information about a character or a location.' +
+        ' Do not pass anything to show info about current location.',
+        usage='(charcter name | location name)'
     )
 )
 
@@ -70,12 +79,16 @@ class World:
             self,
             all_locations: tuple[Location],
             all_characters: tuple[Character],
-            starting_location: Location
+            starting_location: Location,
+            first_interaction: bool = False,
+            assistant: bool = False
     ) -> None:
         self._all_locations: tuple[Location] = all_locations
         self._all_characters: tuple[Character] = all_characters
         self._location: Location = starting_location
         self._fails = 0
+        self._first_interaction = first_interaction
+        self._assistant: bool = assistant
 
     @property
     def location(self) -> Location:
@@ -89,6 +102,9 @@ class World:
 
     def _prefix(self) -> None:
         console.print(Text.assemble('[ ', self.location.display_name, ' ] '), end='')
+
+    def _prefix_help(self) -> None:
+        console.print('[', Text.assemble( 'Help', style=Style(color='blue') ), ']', end=' ')
 
     def find_location(self, name: str) -> Location | None:
         try:
@@ -197,6 +213,43 @@ class World:
     #     return (True, character.hook)
 
     def interaction(self) -> Character | Location | None:
+        if self._first_interaction:
+            self._prefix_help()
+            console.print(
+                'This is your first interaction with the World.',
+                'Would you like some assitance?'
+            )
+            expect = ('yes', 'no')
+            self._prefix_help()
+            query = console.input('')
+            while query.lower() not in expect:
+                self._prefix_help()
+                query = console.input('"yes" or "no"? ')
+            self._first_interaction = False
+            if query == 'no':
+                self._prefix_help()
+                console.print('OK! I won\'t ask you again. Have fun!')
+                return None
+            for line in (
+                Text.assemble(
+                    Text.assemble('Fix The Engines', style=Style(bold=True)),
+                    ' is text-based, paragraph game. There is no mouse control,',
+                    ' you operate only with commands.'
+                ),
+                'You can show them by typing "help" during interaction' +
+                ' with the World.',
+                'All commands are single words. For example "help" or' +
+                ' "go" insted of "go to".',
+                # 'You can type "help <command>" (eg. "help go")' +
+                # ' to see it\'s usage and description.',
+                'Have fun! :smile:'
+            ):
+                self._prefix_help()
+                console.print(line)
+                if not DEBUG:
+                    sleep(2.0)
+            self._assistant = True
+            return None
         query = ''
         while not query:
             try:
@@ -232,21 +285,36 @@ class World:
                 console.print('Goodbye!')
                 exit()
             case 'help':
-                self._prefix()
-                if not argument:
-                    console.print(Text.assemble(
-                        'Available commands',
-                        style=Style(bold=True)
-                    ))
-                    for cmd in commands.keys():
-                        console.print(
-                            '{0.name} - {0.brief}'.format(commands[cmd])
-                        )
+                show_commands, show_arguments = False, False
+                if argument == 'commands':
+                    show_commands = True
+                elif argument == 'arguments':
+                    show_arguments = True
                 else:
-                    if not (cmd := commands.get(argument)):
-                        console.print(f'Command `{argument}` does not exist.')
-                    else:
-                        console.print('{0.name}: {0.description}'.format(cmd))
+                    show_commands, show_arguments = True, True
+                if show_commands:
+                    commands_table = Table(
+                        title='Available commands',
+                        show_lines=True
+                    )
+                    commands_table.add_column('Command')
+                    commands_table.add_column('Description')
+                    commands_table.add_column('Usage')
+                    for cmd in commands.values():
+                        commands_table.add_row(cmd.name, cmd.description, cmd.usage)
+                    console.print(commands_table)
+                if show_arguments:
+                    arguments_table = Table(title='Arguments description')
+                    arguments_table.add_column('Representation')
+                    arguments_table.add_column('Description')
+                    for line in (
+                        ('< ... >', 'Required argument.'),
+                        ('( ... )', 'Optional argument.'),
+                        ('( a | b )', 'Optional argument, but only "a" or "b".')
+                    ):
+                        arguments_table.add_row(*line)
+                    console.print(arguments_table)
+                return None
             case 'talk':
                 if not argument:
                     self._prefix()
