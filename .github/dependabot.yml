@@ -4,7 +4,7 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    target-breanch: "main"
+    target-branch: "main"
     assignees:
       - "AnonymousX86"
     labels:
