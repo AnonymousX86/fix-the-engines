@@ -203,6 +203,12 @@ class World:
                 self._prefix()
                 query = console.input('')
             except KeyboardInterrupt:
+                console.print(Text.assemble(
+                    ' Retry...',
+                    style=Style(
+                        color='yellow',
+                        italic=True
+                )))
                 continue
         try:
             query.index(' ')
