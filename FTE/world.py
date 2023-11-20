@@ -55,6 +55,12 @@ commands: dict[str, Command] = dict(
         'go',
         'Go somewhere.',
         'Pass location name to go there.'
+    ),
+    info = Command(
+        'info',
+        'Get information about a character or a place.',
+        'Pass character or location name to get information about what' +
+        'do you know about the subject.'
     )
 )
 
@@ -129,17 +135,54 @@ class World:
             if not silently:
                 character.action('Walks out.')
 
+    def _show_location_characters(self) -> None:
+        self._prefix()
+        if (l := len(self.characters)) == 0:
+            console.print('There are no characters in this location.')
+            return
+        if l == 1:
+            console.print('There is 1 character in this location: ', end='')
+        else:
+            console.print(f'There are {l} characters in this location: ', end='')
+        location_characters: list[str | Text] = []
+        for char in self.characters:
+            location_characters.append(char.display_name)
+            location_characters.append(', ')
+        location_characters = location_characters[:-1]
+        console.print(*location_characters, '.', sep='')
+
+    def _show_all_locations(self) -> None:
+        self._prefix()
+        other_locations = tuple(filter(lambda l: l != self.location, self._all_locations))
+        if (l := len(other_locations)) == 0:
+            console.print('There are no other locations you can go to.')
+            return
+        if l == 1:
+            console.print('There is 1 other location you can go to: ', end='')
+        else:
+            console.print(f'There are {l} other locations you can go to: ', end='')
+        locations: list[str | Text] = []
+        for loc in self._all_locations:
+            locations.append(loc.display_name)
+            locations.append(', ')
+        locations = locations[:-1]
+        console.print(*locations, '.', sep='')
+
     def go_to(
             self,
             location: Location,
-    ) -> tuple[bool, Text]:
+    ) -> bool:
         """Tries to go specifiec `Location`.
            If location didn't change it returns `False`, otherwise `True`.
         """
         if self._location == location:
-            return (False, Text('You\'re currently here.'))
+            console.print('You\'re currently here.')
+            return False
         self._location = location
-        return (True, Text.assemble('You\'re now in ', self.location.display_name, '.'))
+        self._prefix()
+        console.print(Text.assemble('You\'re now in ', self.location.display_name, '.'))
+        self._show_location_characters()
+        return True
 
     # def talk_to(
     #         self,
@@ -224,7 +267,32 @@ class World:
                     self._prefix()
                     console.print('You don\'t know this location.')
                     return None
-                (success, response) = self.go_to(loc)
+                if not self.go_to(loc):
+                    return None
+                return self._location
+            case 'info':
+                if not argument:
+                    self._show_location_characters()
+                    self._show_all_locations()
+                    return None
+                if (char := self.find_character(argument)):
+                    self._prefix()
+                    console.print(Text.assemble(
+                        char.display_name,
+                        'has',
+                        char.standing.color_text,
+                        'standing towards you.'
+                    ))
+                    if (i := char.info):
+                        self._prefix()
+                        console.print(Text.assemble(char.display_name, '-', i))
+                    return None
+                if (loc := self.find_location(argument)):
+                    self._prefix()
+                    if (i := loc.info):
+                        console.print(i)
+                    else:
+                        console.print('You don\'t know anything about tat location.')
+                    return None
                 self._prefix()
-                console.print(response)
-                return loc if success else None
+                console.print('I don\'t know what do you mean.')
