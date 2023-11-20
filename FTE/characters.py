@@ -15,6 +15,25 @@ class Standing(IntEnum):
     NEUTRAL = 0
     BAD = -10
 
+    def __str__(self) -> str:
+        if self >= Standing.GOOD:
+            return 'Good'
+        if self <= Standing.BAD:
+            return 'Bad'
+        return 'Neutral'
+
+    @property
+    def color(self) -> str:
+        if self >= Standing.GOOD:
+            return 'green4'
+        if self <= Standing.BAD:
+            return 'red3'
+        return 'sky_blue3'
+
+    @property
+    def color_text(self) -> Text:
+        return Text.assemble(str(self), style=Style(color=self.color))
+
 
 class Character:
     def __init__(
@@ -43,7 +62,7 @@ class Character:
             self.name if self.known else '???',
             style=Style(
                 bold=True,
-                color=standing_color(self.standing)
+                color=self.standing.color
             )
         )
 
@@ -65,11 +84,3 @@ class Character:
             Text.assemble('*', text, '*', style=Style(italic=True))
         ))
         sleep(0.0 if DEBUG else 1.5)
-
-
-def standing_color(standing: Standing) -> str:
-    if standing >= Standing.GOOD:
-        return 'green4'
-    if standing <= Standing.BAD:
-        return 'red3'
-    return 'sky_blue3'
