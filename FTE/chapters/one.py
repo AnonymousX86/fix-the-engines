@@ -11,10 +11,22 @@ from FTE.utils import slow_print, slower_print, story
 from FTE.world import World
 
 def chapter_one() -> None:
-    bridge = Location('Bridge')
-    capsules = Location('Capsules')
-    engine_deck = Location('Engine Deck')
-    quarters = Location('Quarters')
+    bridge = Location(
+        'Bridge',
+        'Big fishes spend time here.'
+    )
+    capsules = Location(
+        'Capsules',
+        'You can escape the ship here during an emergency'
+    )
+    engine_deck = Location(
+        'Engine Deck',
+        'Here engineers make sure the ship is working properly.'
+    )
+    quarters = Location(
+        'Quarters',
+        'All crewmen spend night and freetime here.'
+    )
 
     roommate = Character('Hevy', quarters, poke='Good to see you.', standing=Standing.GOOD)
     capitan = Character('Rex', bridge, poke='Yes sergant? Oh, wait.')
