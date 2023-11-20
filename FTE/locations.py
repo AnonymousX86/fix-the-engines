@@ -7,10 +7,12 @@ class Location:
     def __init__(
             self,
             name: str,
+            info: str = None,
             *,
             known: bool = True
     ) -> None:
         self.name: str = name
+        self.info: str = info or ''
         self.known: bool = known
 
     @property

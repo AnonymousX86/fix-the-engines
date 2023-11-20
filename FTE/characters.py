@@ -41,12 +41,14 @@ class Character:
         name: str,
         location: Location,
         *,
+        info: str = None,
         poke: str = None,
         standing: Standing = None,
         known: bool = True
     ) -> None:
         self.name: str = name
         self.location: Location = location
+        self.info: str = info or ''
         self.poke: str = poke or ''
         self.standing: Standing = standing or Standing.NEUTRAL
         self.known: bool = known
