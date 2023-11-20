@@ -17,7 +17,7 @@ def chapter_one() -> None:
     )
     capsules = Location(
         'Capsules',
-        'You can escape the ship here during an emergency'
+        'You can escape the ship here during an emergency.'
     )
     engine_deck = Location(
         'Engine Deck',
