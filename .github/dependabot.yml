@@ -1,0 +1,12 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    target-breanch: "main"
+    assignees:
+      - "AnonymousX86"
+    labels:
+      - "dependencies"
+    open-pull-requests-limit: 3
