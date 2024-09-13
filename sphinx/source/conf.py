@@ -44,3 +44,4 @@ autodoc_default_options = {
 
 html_theme = 'bizstyle'
 html_static_path = ['_static']
+html_baseurl = 'fix-the-engines'  # Used on GitHub Pages
