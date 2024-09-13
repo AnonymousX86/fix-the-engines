@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+"""
+Main game component, everything about user interactions. "Glues" together all components.
+"""
 from time import sleep
 
 from rich.style import Style
@@ -12,18 +15,27 @@ from FTE.settings import DEBUG
 
 
 class UnknownCommand(BaseException):
-    pass
+    """Command doesn't exist."""
 
 
 class UnknownLocation(BaseException):
-    pass
+    """Location doesn't exist."""
 
 
 class UnknownCharacter(BaseException):
-    pass
+    """Character doesn't exist."""
 
 
 class Command:
+    """How player can interact with the game. Represents player's action.
+
+    :param name: Which word invokes the command.
+    :type name: :obj:`str`
+    :param description: Detailed and complete information how to use the command.
+    :type description: :obj:`str`
+    :param usage: Example usage of a command with expected types.
+    :type usage: :obj:`str`
+    """
     def __init__(
             self,
             name: str,
@@ -37,12 +49,13 @@ class Command:
 
     @property
     def usage(self) -> str:
+        """Example usage of a command with expected types, defaults to :attr:`FTE.world.Command.name`."""
         if not self._usage:
             return self.name
         return f'{self.name} {self._usage}'
 
 
-commands: dict[str, Command] = dict(
+COMMANDS: dict[str, Command] = dict(  # All available commands
     exit = Command(
         'exit',
         'Exits the game.'
@@ -75,6 +88,19 @@ commands: dict[str, Command] = dict(
 
 
 class World:
+    """Represents the game environment, the player, locations, characters, and matches of those.
+
+    :param all_locations: Available (used) locations.
+    :type all_locations: :obj:`tuple` of :class:`FTE.locations.Location`
+    :param all_characters: Availabel (used) characters.
+    :type all_characters: :obj:`tuple` of :class:`FTE.characters.Character`
+    :param starting_location: Where player starts the game.
+    :type starting_location: :class:`FTE.locations.Location`
+    :param first_interaction: If this session is player's first interaction, e.g. first chapter.
+    :type first_interaction: :obj:`bool`
+    :param assistant: If game assistant should be enabled.
+    :type assistant: :obj:`bool`
+    """
     def __init__(
             self,
             all_locations: tuple[Location],
@@ -92,21 +118,32 @@ class World:
 
     @property
     def location(self) -> Location:
+        """Player's current location. Displays ``"???"`` if location is not known by the player."""
         if self._location not in self._all_locations:
             return Location('???')
         return self._location
 
     @property
     def characters(self) -> tuple[Character]:
+        """All characters in player's current location."""
         return tuple(c for c in self._all_characters if c.location.name == self._location.name)
 
     def _prefix(self) -> None:
+        """Displays before game console's input field with current location's name."""
         console.print(Text.assemble('[ ', self.location.display_name, ' ] '), end='')
 
     def _prefix_help(self) -> None:
+        """Displays before game console's input field inside help menu/mode."""
         console.print('[', Text.assemble( 'Help', style=Style(color='blue') ), ']', end=' ')
 
     def find_location(self, name: str) -> Location | None:
+        """Tries to find a location in all locations by its' name.
+
+        :param name: The location's name to be found.
+        :type name: :obj:`str`
+        :return: The location if it's found, `None` otherwise.
+        :rtype: :class:`FTE.locations.Location` or `None`
+        """
         try:
             location = tuple(filter(
                 lambda l: l.name.lower() == name.lower() and l.known,
@@ -117,16 +154,46 @@ class World:
         else:
             return location
 
-    def find_character(self, name: str) -> Character:
+    def find_character(self, name: str) -> Character | None:
+        """Tries to find a character in all characters by it's name.
+
+        :param name: The character's name to be found.
+        :type name: :obj:`str`
+        :return: The character if it's found, `None` otherwise.
+        :rtype: :class:`FTE.characters.Character` or `None`
+        """
         return next((c for c in self._all_characters if c.name.lower() == name.lower()), None)
 
     def _character_in(self, name: str, scope: tuple[Character] | list[Character]) -> bool:
+        """Checks if character is in a location.
+
+        :param name: Character's name to be checked.
+        :type name: :obj:`str`
+        :param scope: List of characters to search in.
+        :type scope: :obj:`tuple` of :class:`FTE.characters.Character` or :obj:`list` of :class:`FTE.characters.Character`
+        :return: `True` if character is in a location, `False` otherwise.
+        :rtype: :obj:`bool`
+        """
         return any(c.name.lower() == name.lower() and c.known for c in scope)
 
     def character_in_global(self, name: str) -> bool:
+        """Checks if character exists.
+
+        :param name: Target character's name.
+        :type name: :obj:`str`
+        :return: `True` if character exists, `False` otherwise.
+        :rtype: :obj:`bool`
+        """
         return self._character_in(name, self._all_characters)
 
     def character_in_location(self, name: str) -> bool:
+        """Checks if character is in the same location.
+
+        :param name: Target character's name.
+        :type name: :obj:`str`
+        :return: `True` if character is in the same location as the player, `False` otherwise.
+        :rtype: :obj:`bool`
+        """
         return self._character_in(name, self.characters)
 
     def character_enters(
@@ -135,6 +202,13 @@ class World:
             *,
             silently: bool = False
     ) -> None:
+        """Moves a character to player's current location.
+
+        :param character: The character to move.
+        :type character: :class:`FTE.characters.Character`
+        :param silently: If player should know about the character's entrance.
+        :type silently: :obj:`bool`
+        """
         if not self.character_in_location(character.name):
             character.location = self._location
             if not silently:
@@ -147,12 +221,22 @@ class World:
             *,
             silently: bool = False
     ) -> None:
+        """Moves a character to another location.
+
+        :param character: The character to move.
+        :type character: :class:`FTE.characters.Character`
+        :param goes_to: Where the character will move.
+        :type goes_to: :class:`FTE.locations.Location`
+        :param silently: If player should know about the character's leave.
+        :type silently: :obj:`bool` or `None`
+        """
         if self.character_in_location(character.name):
             character.location = goes_to
             if not silently:
                 character.action('Walks out.')
 
     def _show_location_characters(self) -> None:
+        """Displays characters count and list in player's location."""
         self._prefix()
         if (l := len(self.characters)) == 0:
             console.print('There are no characters in this location.')
@@ -169,6 +253,7 @@ class World:
         console.print(*location_characters, '.', sep='')
 
     def _show_other_locations(self) -> None:
+        """Displays count and list of available locations."""
         self._prefix()
         other_locations = tuple(filter(lambda l: l != self.location, self._all_locations))
         if (l := len(other_locations)) == 0:
@@ -186,6 +271,7 @@ class World:
         console.print(*locations, '.', sep='')
 
     def _do_first_interaction(self) -> None:
+        """Displays basic information how to play and asks if player needs additional help."""
         self._prefix_help()
         console.print(
             'This is your first interaction with the World.',
@@ -221,11 +307,13 @@ class World:
         self._assistant = True
 
     def _command_exit(self) -> None:
+        """Exits the game."""
         self._prefix()
         console.print('Goodbye!')
         exit()
 
     def _command_help(self, menu: str = None) -> None:
+        """Displays help menu."""
         show_commands, show_arguments = False, False
         if menu == 'commands':
             show_commands = True
@@ -241,7 +329,7 @@ class World:
             commands_table.add_column('Command')
             commands_table.add_column('Description')
             commands_table.add_column('Usage')
-            for cmd in commands.values():
+            for cmd in COMMANDS.values():
                 commands_table.add_row(cmd.name, cmd.description, cmd.usage)
             console.print(commands_table)
         if show_arguments:
@@ -257,9 +345,20 @@ class World:
             console.print(arguments_table)
 
     def _command_talk(self, character_name: str) -> Character | None:
-        """Tries to go specifiec `Character` by `character_name`.
-           If character exists, is in currect `Location` and is `pokable`
-           it returns it, otherwise `None`.
+        """
+        Tries to talk to a :class:`FTE.characters.Character`.
+        The character must:
+
+        - exist,
+        - be in the player's location,
+        - be pokable.
+
+        If no name is specified, nothing happens.
+
+        :param character_name: The character's name to which player is trying to talk.
+        :type character_name: :obj:`str`
+        :return: The character player is trying to talk. `None` if the character doesn't meet above requirements.
+        :rtype: :class:`FTE.characters.Character` or `None`
         """
         if not character_name:
             self._prefix()
@@ -285,8 +384,12 @@ class World:
             self,
             location_name: str = None,
     ) -> Location | None:
-        """Tries to go specifiec `Location` by `location_name`.
-           If location changed it returns it, otherwise `None`.
+        """Tries to go to a location.
+
+        :param location_name: The location's name to which player is trying to go to. If no name is specified, nothing happens.
+        :type location_name: :obj:`str`
+        :return: The location player is trying to go. `None` if the location doesn't exist or player is already in wanted location.
+        :rtype: :class:`FTE.locations.Location` or `None`
         """
         if not location_name:
             self._prefix()
@@ -306,8 +409,10 @@ class World:
         return location
 
     def _command_info(self, name: str = None) -> None:
-        """Shows info about `Location` by `Location.name`
-           or `Character` by `Character.name`.
+        """Displays informaiom about a character or location.
+
+        :param name: Character or location name the player wants information baout, defaults to current location.
+        :type name: :obj:`str`
         """
         if not name:
             name = self._location.name
@@ -335,11 +440,24 @@ class World:
             self._prefix()
             console.print('I don\'t know what do you mean.')
 
-    def assistant(self, text: str| Text) -> None:
+    def assistant(self, text: str | Text) -> None:
+        """Displays additional help if the player requested it during the first :meth:`FTE.world.World.interaction`.
+
+        :param text: The text to display.
+        :type text: :obj:`str` or :class:`rich.text.Text`
+        """
         if self._assistant:
             console.print(text)
 
     def interaction(self) -> Character | Location | None:
+        """
+        The main game logic. Controls interactions between the player and world.
+        For example talking to characters and going to locations.
+        At first time game asks player if they want to enable assistant (:meth:`FTE.world.World.assistant`).
+
+        :return: The object with wich player got with interaction. `None` if doesn't apply.
+        :rtype: :class:`FTE.characters.Character`, :class:`FTE.locations.Location`, or `None`
+        """
         if self._first_interaction:
             self._do_first_interaction()
             return None
@@ -362,7 +480,7 @@ class World:
             command, argument = query, None
         else:
             [command, argument] = query.split(' ', 1)
-        command = commands.get(command)
+        command = COMMANDS.get(command)
         if not command:
             self._fails += 1
             self._prefix()

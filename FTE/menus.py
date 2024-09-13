@@ -1,11 +1,16 @@
 # -*- coding: utf-8 -*-
+"""
+Displays menu's. Currently only main menu to start or exit the game.
+"""
 from rich.style import Style
 
 from time import sleep
 
 from FTE.console import console
 
+
 def main_menu() -> None:
+    """Displays main menu."""
     while True:
         console.clear()
         console.rule('Main menu')

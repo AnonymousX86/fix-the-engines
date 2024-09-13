@@ -1,4 +1,14 @@
 # -*- coding: utf-8 -*-
+"""
+The player wakes up in quarters. Thier roomate encouredges to go to rescue
+themselves using an escape pod, or go to engineers to help them.
+
+# Capsules
+TODO
+
+# Engine Deck
+TODO
+"""
 from time import sleep
 
 from rich.text import Text
@@ -10,7 +20,9 @@ from FTE.settings import DEBUG
 from FTE.utils import slow_print, slower_print, story
 from FTE.world import World
 
+
 def chapter_one() -> None:
+    """Plays chapter one."""
     bridge = Location(
         'Bridge',
         'Big fishes spend time here.'
@@ -90,4 +102,4 @@ def chapter_one() -> None:
         world.character_enters(roommate)
         roommate.monologue('Don\'t worry, we\'re here to help.')
 
-    story('...more coming soon!')
+    story(['...more coming soon!'])
