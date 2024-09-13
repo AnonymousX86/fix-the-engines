@@ -44,19 +44,4 @@ autodoc_default_options = {
 
 html_theme = 'bizstyle'
 html_static_path = ['_static']
-# html_sidebars = {
-#     '**': ['search-field.html', 'sidebar-nav-bs.html'],
-#     'index': []
-#     }
-# html_theme_options = {
-#     'logo': {'text': project},
-#     'navbar_end': ['theme-switcher', 'navbar-icon-links'],
-#     'icon_links': [
-#         {
-#             'name': 'GitHub',
-#             'url': 'https://github.com/AnonymousX86/fix-the-engines',
-#             'icon': 'fa-brands fa-square-github',
-#             'type': 'fontawesome'
-#         }
-#     ]
-# }
+html_baseurl = 'fix-the-engines'  # Used on GitHub Pages
