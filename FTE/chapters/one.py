@@ -3,10 +3,12 @@
 The player wakes up in quarters. Thier roomate encouredges to go to rescue
 themselves using an escape pod, or go to engineers to help them.
 
-# Capsules
+Capsules
+--------
 TODO
 
-# Engine Deck
+Engine Deck
+-----------
 TODO
 """
 from time import sleep
