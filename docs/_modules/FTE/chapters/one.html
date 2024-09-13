@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FTE.chapters.one &#8212; Fix The Engines 0.4.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=649a27d8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bizstyle.css?v=658d757c" />
+    
+    <script src="../../../_static/documentation_options.js?v=6c02275b"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Fix The Engines 0.4.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">FTE.chapters.one</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for FTE.chapters.one</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">The player wakes up in quarters. Thier roomate encouredges to go to rescue</span>
+<span class="sd">themselves using an escape pod, or go to engineers to help them.</span>
+
+<span class="sd">Capsules</span>
+<span class="sd">--------</span>
+<span class="sd">TODO</span>
+
+<span class="sd">Engine Deck</span>
+<span class="sd">-----------</span>
+<span class="sd">TODO</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="kn">from</span> <span class="nn">rich.text</span> <span class="kn">import</span> <span class="n">Text</span>
+
+<span class="kn">from</span> <span class="nn">FTE.characters</span> <span class="kn">import</span> <span class="n">Character</span><span class="p">,</span> <span class="n">Standing</span>
+<span class="kn">from</span> <span class="nn">FTE.console</span> <span class="kn">import</span> <span class="n">console</span>
+<span class="kn">from</span> <span class="nn">FTE.locations</span> <span class="kn">import</span> <span class="n">Location</span>
+<span class="kn">from</span> <span class="nn">FTE.settings</span> <span class="kn">import</span> <span class="n">DEBUG</span>
+<span class="kn">from</span> <span class="nn">FTE.utils</span> <span class="kn">import</span> <span class="n">slow_print</span><span class="p">,</span> <span class="n">slower_print</span><span class="p">,</span> <span class="n">story</span>
+<span class="kn">from</span> <span class="nn">FTE.world</span> <span class="kn">import</span> <span class="n">World</span>
+
+
+<div class="viewcode-block" id="chapter_one">
+<a class="viewcode-back" href="../../../_FTE_autodoc/FTE.chapters.html#FTE.chapters.one.chapter_one">[docs]</a>
+<span class="k">def</span> <span class="nf">chapter_one</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plays chapter one.&quot;&quot;&quot;</span>
+    <span class="n">bridge</span> <span class="o">=</span> <span class="n">Location</span><span class="p">(</span>
+        <span class="s1">&#39;Bridge&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Big fishes spend time here.&#39;</span>
+    <span class="p">)</span>
+    <span class="n">capsules</span> <span class="o">=</span> <span class="n">Location</span><span class="p">(</span>
+        <span class="s1">&#39;Capsules&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;You can escape the ship here during an emergency.&#39;</span>
+    <span class="p">)</span>
+    <span class="n">engine_deck</span> <span class="o">=</span> <span class="n">Location</span><span class="p">(</span>
+        <span class="s1">&#39;Engine Deck&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Here engineers make sure the ship is working properly.&#39;</span>
+    <span class="p">)</span>
+    <span class="n">quarters</span> <span class="o">=</span> <span class="n">Location</span><span class="p">(</span>
+        <span class="s1">&#39;Quarters&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;All crewmen spend night and freetime here.&#39;</span>
+    <span class="p">)</span>
+
+    <span class="n">roommate</span> <span class="o">=</span> <span class="n">Character</span><span class="p">(</span><span class="s1">&#39;Hevy&#39;</span><span class="p">,</span> <span class="n">quarters</span><span class="p">,</span> <span class="n">poke</span><span class="o">=</span><span class="s1">&#39;Good to see you.&#39;</span><span class="p">,</span> <span class="n">standing</span><span class="o">=</span><span class="n">Standing</span><span class="o">.</span><span class="n">GOOD</span><span class="p">)</span>
+    <span class="n">capitan</span> <span class="o">=</span> <span class="n">Character</span><span class="p">(</span><span class="s1">&#39;Rex&#39;</span><span class="p">,</span> <span class="n">bridge</span><span class="p">,</span> <span class="n">poke</span><span class="o">=</span><span class="s1">&#39;Yes sergant? Oh, wait.&#39;</span><span class="p">)</span>
+    <span class="n">pilot</span> <span class="o">=</span> <span class="n">Character</span><span class="p">(</span><span class="s1">&#39;Mixiu&#39;</span><span class="p">,</span> <span class="n">bridge</span><span class="p">,</span> <span class="n">poke</span><span class="o">=</span><span class="s1">&#39;What the fuck do you want?&#39;</span><span class="p">)</span>
+    <span class="n">engineer</span> <span class="o">=</span> <span class="n">Character</span><span class="p">(</span><span class="s1">&#39;Tech&#39;</span><span class="p">,</span> <span class="n">engine_deck</span><span class="p">,</span> <span class="n">poke</span><span class="o">=</span><span class="s1">&#39;We should invest in twin ion engines.&#39;</span><span class="p">)</span>
+
+    <span class="n">world</span> <span class="o">=</span> <span class="n">World</span><span class="p">(</span>
+        <span class="n">all_locations</span><span class="o">=</span><span class="p">(</span><span class="n">bridge</span><span class="p">,</span> <span class="n">capsules</span><span class="p">,</span> <span class="n">engine_deck</span><span class="p">,</span> <span class="n">quarters</span><span class="p">),</span>
+        <span class="n">all_characters</span><span class="o">=</span><span class="p">(</span><span class="n">roommate</span><span class="p">,</span> <span class="n">capitan</span><span class="p">,</span> <span class="n">pilot</span><span class="p">,</span> <span class="n">engineer</span><span class="p">),</span>
+        <span class="n">starting_location</span><span class="o">=</span><span class="n">quarters</span><span class="p">,</span>
+        <span class="n">first_interaction</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+
+    <span class="n">console</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="s1">&#39;Chapter I&#39;</span><span class="p">)</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="p">[</span>
+        <span class="s1">&#39;Year:      3015&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Ship:      Epsilon IV&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Mission:   Who cares?&#39;</span>
+    <span class="p">]:</span>
+        <span class="n">slow_print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">slower_print</span><span class="p">(</span><span class="s1">&#39;...&#39;</span><span class="p">)</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mf">1.0</span> <span class="k">if</span> <span class="n">DEBUG</span> <span class="k">else</span> <span class="mf">3.0</span><span class="p">)</span>
+
+    <span class="n">console</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="s1">&#39;Chapter I&#39;</span><span class="p">)</span>
+    <span class="n">story</span><span class="p">([</span>
+        <span class="s1">&#39;You wake up in your bed, someone is trying to talk to you, &#39;</span>
+        <span class="s1">&#39;but you</span><span class="se">\&#39;</span><span class="s1">re too sleepy to understand.&#39;</span><span class="p">,</span>
+        <span class="n">Text</span><span class="o">.</span><span class="n">assemble</span><span class="p">(</span><span class="s1">&#39;You recognize them. I</span><span class="se">\&#39;</span><span class="s1">s your roommate - &#39;</span><span class="p">,</span> <span class="n">roommate</span><span class="o">.</span><span class="n">display_name</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;He</span><span class="se">\&#39;</span><span class="s1">s shaking you and after a while you can finally understand him...&#39;</span>
+    <span class="p">])</span>
+    <span class="n">expect</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;no&#39;</span><span class="p">,</span> <span class="s1">&#39;yes&#39;</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">roommate</span><span class="o">.</span><span class="n">dialogue</span><span class="p">(</span><span class="s1">&#39;Hey! Man! Are you dead already?&#39;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">res</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">expect</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">roommate</span><span class="o">.</span><span class="n">dialogue</span><span class="p">(</span><span class="s1">&#39;...&#39;</span><span class="p">)</span>
+    <span class="n">char_res</span> <span class="o">=</span> <span class="s1">&#39;Unfortunately no&#39;</span> <span class="k">if</span> <span class="n">res</span> <span class="o">==</span> <span class="s1">&#39;yes&#39;</span> <span class="k">else</span> <span class="s1">&#39;That</span><span class="se">\&#39;</span><span class="s1">s great&#39;</span>
+    <span class="n">roommate</span><span class="o">.</span><span class="n">monologue</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">char_res</span><span class="si">}</span><span class="s1">, now wake up and get a move on, of we</span><span class="se">\&#39;</span><span class="s1">re screwed.&#39;</span><span class="p">)</span>
+    <span class="n">roommate</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="s1">&#39;Throws you your clothes.&#39;</span><span class="p">)</span>
+    <span class="n">roommate</span><span class="o">.</span><span class="n">monologue</span><span class="p">(</span><span class="s1">&#39;Aight, you ready?&#39;</span><span class="p">)</span>
+    <span class="n">roommate</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="s1">&#39;Claps to you.&#39;</span><span class="p">)</span>
+    <span class="n">roommate</span><span class="o">.</span><span class="n">monologue</span><span class="p">(</span><span class="n">Text</span><span class="o">.</span><span class="n">assemble</span><span class="p">(</span>
+        <span class="s1">&#39;We either go to &#39;</span><span class="p">,</span>
+        <span class="n">capsules</span><span class="o">.</span><span class="n">display_name</span><span class="p">,</span>
+        <span class="s1">&#39; or to &#39;</span><span class="p">,</span>
+        <span class="n">engine_deck</span><span class="o">.</span><span class="n">display_name</span><span class="p">,</span>
+        <span class="s1">&#39;, I don</span><span class="se">\&#39;</span><span class="s1">t trust our engineers tho.&#39;</span>
+    <span class="p">))</span>
+    <span class="n">expect</span> <span class="o">=</span> <span class="p">(</span><span class="n">capsules</span><span class="p">,</span> <span class="n">engine_deck</span><span class="p">)</span>
+    <span class="n">roommate</span><span class="o">.</span><span class="n">poke</span> <span class="o">=</span> <span class="s1">&#39;There</span><span class="se">\&#39;</span><span class="s1">s no time, let</span><span class="se">\&#39;</span><span class="s1">s go!&#39;</span>
+    <span class="k">while</span> <span class="n">res</span> <span class="o">!=</span> <span class="n">capsules</span> <span class="ow">and</span> <span class="n">res</span> <span class="o">!=</span> <span class="n">engine_deck</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">while</span> <span class="n">res</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">interaction</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">res</span> <span class="o">==</span> <span class="n">capsules</span><span class="p">:</span>
+        <span class="n">world</span><span class="o">.</span><span class="n">character_enters</span><span class="p">(</span><span class="n">roommate</span><span class="p">)</span>
+        <span class="n">roommate</span><span class="o">.</span><span class="n">monologue</span><span class="p">(</span><span class="s1">&#39;This ship sucks either way...&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">engineer</span><span class="o">.</span><span class="n">monologue</span><span class="p">(</span><span class="s1">&#39;Hey! What are you doing here?&#39;</span><span class="p">)</span>
+        <span class="n">world</span><span class="o">.</span><span class="n">character_enters</span><span class="p">(</span><span class="n">roommate</span><span class="p">)</span>
+        <span class="n">roommate</span><span class="o">.</span><span class="n">monologue</span><span class="p">(</span><span class="s1">&#39;Don</span><span class="se">\&#39;</span><span class="s1">t worry, we</span><span class="se">\&#39;</span><span class="s1">re here to help.&#39;</span><span class="p">)</span>
+
+    <span class="n">story</span><span class="p">([</span><span class="s1">&#39;...more coming soon!&#39;</span><span class="p">])</span></div>
+
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Fix The Engines 0.4.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">FTE.chapters.one</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024, Jakub Suchenek, Michał Gołębiewski.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    </div>
+  </body>
+</html>

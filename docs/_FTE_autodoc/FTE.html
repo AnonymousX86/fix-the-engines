@@ -1,0 +1,743 @@
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>FTE package &#8212; Fix The Engines 0.4.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=649a27d8" />
+    <link rel="stylesheet" type="text/css" href="../_static/bizstyle.css?v=658d757c" />
+    
+    <script src="../_static/documentation_options.js?v=6c02275b"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FTE.chapters package" href="FTE.chapters.html" />
+    <link rel="prev" title="FTE" href="modules.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="FTE.chapters.html" title="FTE.chapters package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="FTE"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Fix The Engines 0.4.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" accesskey="U">FTE</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">FTE package</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="fte-package">
+<h1>FTE package<a class="headerlink" href="#fte-package" title="Link to this heading">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="FTE.chapters.html">FTE.chapters package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="FTE.chapters.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FTE.chapters.html#module-FTE.chapters.one">FTE.chapters.one module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="FTE.chapters.html#capsules">Capsules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FTE.chapters.html#engine-deck">Engine Deck</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FTE.chapters.html#FTE.chapters.one.chapter_one"><code class="docutils literal notranslate"><span class="pre">chapter_one()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="FTE.chapters.html#module-FTE.chapters">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-FTE.characters">
+<span id="fte-characters-module"></span><h2>FTE.characters module<a class="headerlink" href="#module-FTE.characters" title="Link to this heading">¶</a></h2>
+<p>Characters are NPCs, with wich the player can interact.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="FTE.characters.Character">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">FTE.characters.</span></span><span class="sig-name descname"><span class="pre">Character</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#FTE.locations.Location" title="FTE.locations.Location"><span class="pre">Location</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poke</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">standing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#FTE.characters.Standing" title="FTE.characters.Standing"><span class="pre">Standing</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">known</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/FTE/characters.html#Character"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.characters.Character" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="FTE.characters.Character.action">
+<span class="sig-name descname"><span class="pre">action</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Text</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/FTE/characters.html#Character.action"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.characters.Character.action" title="Link to this definition">¶</a></dt>
+<dd><p>Character interaction towards the player.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> or <code class="xref py py-class docutils literal notranslate"><span class="pre">rich.text.Text</span></code>) – Action description.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FTE.characters.Character.dialogue">
+<span class="sig-name descname"><span class="pre">dialogue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Text</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/FTE/characters.html#Character.dialogue"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.characters.Character.dialogue" title="Link to this definition">¶</a></dt>
+<dd><p>Chracter talks towards the player and awaits a response.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> or <code class="xref py py-class docutils literal notranslate"><span class="pre">rich.text.Text</span></code>) – The text chracter will talk to the player.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Player’s response.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="FTE.characters.Character.display_name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">display_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Text</span></em><a class="headerlink" href="#FTE.characters.Character.display_name" title="Link to this definition">¶</a></dt>
+<dd><p>Stylized character’s name, displays <code class="docutils literal notranslate"><span class="pre">&quot;???&quot;</span></code> if character is not known.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FTE.characters.Character.monologue">
+<span class="sig-name descname"><span class="pre">monologue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Text</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/FTE/characters.html#Character.monologue"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.characters.Character.monologue" title="Link to this definition">¶</a></dt>
+<dd><p>Character talks towards the player.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> or <code class="xref py py-class docutils literal notranslate"><span class="pre">rich.text.Text</span></code>) – The text chracter will talk to the player.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="FTE.characters.Character.pokable">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pokable</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#FTE.characters.Character.pokable" title="Link to this definition">¶</a></dt>
+<dd><p>If character has a poke.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="FTE.characters.Standing">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">FTE.characters.</span></span><span class="sig-name descname"><span class="pre">Standing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/FTE/characters.html#Standing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.characters.Standing" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">IntEnum</span></code></p>
+<p>Represents relations between the player and characters.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="FTE.characters.Standing.BAD">
+<span class="sig-name descname"><span class="pre">BAD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-10</span></em><a class="headerlink" href="#FTE.characters.Standing.BAD" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="FTE.characters.Standing.GOOD">
+<span class="sig-name descname"><span class="pre">GOOD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#FTE.characters.Standing.GOOD" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="FTE.characters.Standing.NEUTRAL">
+<span class="sig-name descname"><span class="pre">NEUTRAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#FTE.characters.Standing.NEUTRAL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="FTE.characters.Standing.color">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">color</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#FTE.characters.Standing.color" title="Link to this definition">¶</a></dt>
+<dd><p>Standing color used in <code class="xref py py-class docutils literal notranslate"><span class="pre">rich.style.Style</span></code>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="FTE.characters.Standing.color_text">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">color_text</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Text</span></em><a class="headerlink" href="#FTE.characters.Standing.color_text" title="Link to this definition">¶</a></dt>
+<dd><p>Standing name with color applied.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-FTE.console">
+<span id="fte-console-module"></span><h2>FTE.console module<a class="headerlink" href="#module-FTE.console" title="Link to this heading">¶</a></h2>
+<p>Main game window, handles all input and output.</p>
+</section>
+<section id="module-FTE.locations">
+<span id="fte-locations-module"></span><h2>FTE.locations module<a class="headerlink" href="#module-FTE.locations" title="Link to this heading">¶</a></h2>
+<p>Location is an object, which stores characters. Any NPC character could be in
+any location, but player must be only in a single location.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="FTE.locations.Location">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">FTE.locations.</span></span><span class="sig-name descname"><span class="pre">Location</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">known</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/FTE/locations.html#Location"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.locations.Location" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Represents a location inside the game.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The location’s name.</p></li>
+<li><p><strong>info</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – What the player should know about the loction.</p></li>
+<li><p><strong>known</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>) – If location is known to the player.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="FTE.locations.Location.display_name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">display_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Text</span></em><a class="headerlink" href="#FTE.locations.Location.display_name" title="Link to this definition">¶</a></dt>
+<dd><p>Stylized location’s name, or <code class="docutils literal notranslate"><span class="pre">&quot;???&quot;</span></code> if location is not known.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-FTE.menus">
+<span id="fte-menus-module"></span><h2>FTE.menus module<a class="headerlink" href="#module-FTE.menus" title="Link to this heading">¶</a></h2>
+<p>Displays menu’s. Currently only main menu to start or exit the game.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="FTE.menus.main_menu">
+<span class="sig-prename descclassname"><span class="pre">FTE.menus.</span></span><span class="sig-name descname"><span class="pre">main_menu</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/FTE/menus.html#main_menu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.menus.main_menu" title="Link to this definition">¶</a></dt>
+<dd><p>Displays main menu.</p>
+</dd></dl>
+
+</section>
+<section id="module-FTE.settings">
+<span id="fte-settings-module"></span><h2>FTE.settings module<a class="headerlink" href="#module-FTE.settings" title="Link to this heading">¶</a></h2>
+<p>Game global settings.</p>
+<p>Settings are set by environemnt variables. None is required.</p>
+<p><cite>DEBUG</cite> – used for skipping game to current working point.</p>
+</section>
+<section id="module-FTE.utils">
+<span id="fte-utils-module"></span><h2>FTE.utils module<a class="headerlink" href="#module-FTE.utils" title="Link to this heading">¶</a></h2>
+<p>Comonnly used functions between classes and chapters.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="FTE.utils.print_with_interval">
+<span class="sig-prename descclassname"><span class="pre">FTE.utils.</span></span><span class="sig-name descname"><span class="pre">print_with_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'\n'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/FTE/utils.html#print_with_interval"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.utils.print_with_interval" title="Link to this definition">¶</a></dt>
+<dd><p>Displays text character by character with desired interval.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Text to be displayed.</p></li>
+<li><p><strong>interval</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Time between each character to be displayed.</p></li>
+<li><p><strong>end</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Overrides ending caracter, defaults to <code class="docutils literal notranslate"><span class="pre">&quot;\n&quot;</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="FTE.utils.slow_print">
+<span class="sig-prename descclassname"><span class="pre">FTE.utils.</span></span><span class="sig-name descname"><span class="pre">slow_print</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'\n'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/FTE/utils.html#slow_print"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.utils.slow_print" title="Link to this definition">¶</a></dt>
+<dd><p>Slowly displays text character by character.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Text to be displayed.</p></li>
+<li><p><strong>end</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Overrides ending caracter, defaults to <code class="docutils literal notranslate"><span class="pre">&quot;\n&quot;</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="FTE.utils.slower_print">
+<span class="sig-prename descclassname"><span class="pre">FTE.utils.</span></span><span class="sig-name descname"><span class="pre">slower_print</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'\n'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/FTE/utils.html#slower_print"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.utils.slower_print" title="Link to this definition">¶</a></dt>
+<dd><p>Very slowly displays text character by character.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Text to be displayed.</p></li>
+<li><p><strong>end</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Overrides ending caracter, defaults to <code class="docutils literal notranslate"><span class="pre">&quot;\n&quot;</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="FTE.utils.story">
+<span class="sig-prename descclassname"><span class="pre">FTE.utils.</span></span><span class="sig-name descname"><span class="pre">story</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Text</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/FTE/utils.html#story"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.utils.story" title="Link to this definition">¶</a></dt>
+<dd><p>Displays a bunch of text in easy readible form for player.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> or <code class="xref py py-class docutils literal notranslate"><span class="pre">rich.text.Text</span></code>) – A text to be displayed. Could be a single text or</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-FTE.world">
+<span id="fte-world-module"></span><h2>FTE.world module<a class="headerlink" href="#module-FTE.world" title="Link to this heading">¶</a></h2>
+<p>Main game component, everything about user interactions. “Glues” together all components.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="FTE.world.Command">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">FTE.world.</span></span><span class="sig-name descname"><span class="pre">Command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">usage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/FTE/world.html#Command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.world.Command" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>How player can interact with the game. Represents player’s action.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Which word invokes the command.</p></li>
+<li><p><strong>description</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Detailed and complete information how to use the command.</p></li>
+<li><p><strong>usage</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Example usage of a command with expected types.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="FTE.world.Command.usage">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">usage</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#FTE.world.Command.usage" title="Link to this definition">¶</a></dt>
+<dd><p>Example usage of a command with expected types, defaults to <code class="xref py py-attr docutils literal notranslate"><span class="pre">FTE.world.Command.name</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="FTE.world.UnknownCharacter">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">FTE.world.</span></span><span class="sig-name descname"><span class="pre">UnknownCharacter</span></span><a class="reference internal" href="../_modules/FTE/world.html#UnknownCharacter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.world.UnknownCharacter" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseException</span></code></p>
+<p>Character doesn’t exist.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="FTE.world.UnknownCommand">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">FTE.world.</span></span><span class="sig-name descname"><span class="pre">UnknownCommand</span></span><a class="reference internal" href="../_modules/FTE/world.html#UnknownCommand"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.world.UnknownCommand" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseException</span></code></p>
+<p>Command doesn’t exist.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="FTE.world.UnknownLocation">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">FTE.world.</span></span><span class="sig-name descname"><span class="pre">UnknownLocation</span></span><a class="reference internal" href="../_modules/FTE/world.html#UnknownLocation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.world.UnknownLocation" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseException</span></code></p>
+<p>Location doesn’t exist.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="FTE.world.World">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">FTE.world.</span></span><span class="sig-name descname"><span class="pre">World</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all_locations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#FTE.locations.Location" title="FTE.locations.Location"><span class="pre">Location</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_characters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#FTE.characters.Character" title="FTE.characters.Character"><span class="pre">Character</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starting_location</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#FTE.locations.Location" title="FTE.locations.Location"><span class="pre">Location</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_interaction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assistant</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/FTE/world.html#World"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.world.World" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Represents the game environment, the player, locations, characters, and matches of those.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>all_locations</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code> of <a class="reference internal" href="#FTE.locations.Location" title="FTE.locations.Location"><code class="xref py py-class docutils literal notranslate"><span class="pre">FTE.locations.Location</span></code></a>) – Available (used) locations.</p></li>
+<li><p><strong>all_characters</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code> of <a class="reference internal" href="#FTE.characters.Character" title="FTE.characters.Character"><code class="xref py py-class docutils literal notranslate"><span class="pre">FTE.characters.Character</span></code></a>) – Availabel (used) characters.</p></li>
+<li><p><strong>starting_location</strong> (<a class="reference internal" href="#FTE.locations.Location" title="FTE.locations.Location"><code class="xref py py-class docutils literal notranslate"><span class="pre">FTE.locations.Location</span></code></a>) – Where player starts the game.</p></li>
+<li><p><strong>first_interaction</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>) – If this session is player’s first interaction, e.g. first chapter.</p></li>
+<li><p><strong>assistant</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>) – If game assistant should be enabled.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="FTE.world.World._character_in">
+<span class="sig-name descname"><span class="pre">_character_in</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scope</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#FTE.characters.Character" title="FTE.characters.Character"><span class="pre">Character</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#FTE.characters.Character" title="FTE.characters.Character"><span class="pre">Character</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/FTE/world.html#World._character_in"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.world.World._character_in" title="Link to this definition">¶</a></dt>
+<dd><p>Checks if character is in a location.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Character’s name to be checked.</p></li>
+<li><p><strong>scope</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code> of <a class="reference internal" href="#FTE.characters.Character" title="FTE.characters.Character"><code class="xref py py-class docutils literal notranslate"><span class="pre">FTE.characters.Character</span></code></a> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <a class="reference internal" href="#FTE.characters.Character" title="FTE.characters.Character"><code class="xref py py-class docutils literal notranslate"><span class="pre">FTE.characters.Character</span></code></a>) – List of characters to search in.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><cite>True</cite> if character is in a location, <cite>False</cite> otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FTE.world.World._command_exit">
+<span class="sig-name descname"><span class="pre">_command_exit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/FTE/world.html#World._command_exit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.world.World._command_exit" title="Link to this definition">¶</a></dt>
+<dd><p>Exits the game.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FTE.world.World._command_go">
+<span class="sig-name descname"><span class="pre">_command_go</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#FTE.locations.Location" title="FTE.locations.Location"><span class="pre">Location</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/FTE/world.html#World._command_go"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.world.World._command_go" title="Link to this definition">¶</a></dt>
+<dd><p>Tries to go to a location.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>location_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The location’s name to which player is trying to go to. If no name is specified, nothing happens.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The location player is trying to go. <cite>None</cite> if the location doesn’t exist or player is already in wanted location.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#FTE.locations.Location" title="FTE.locations.Location"><code class="xref py py-class docutils literal notranslate"><span class="pre">FTE.locations.Location</span></code></a> or <cite>None</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FTE.world.World._command_help">
+<span class="sig-name descname"><span class="pre">_command_help</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">menu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/FTE/world.html#World._command_help"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.world.World._command_help" title="Link to this definition">¶</a></dt>
+<dd><p>Displays help menu.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FTE.world.World._command_info">
+<span class="sig-name descname"><span class="pre">_command_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/FTE/world.html#World._command_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.world.World._command_info" title="Link to this definition">¶</a></dt>
+<dd><p>Displays informaiom about a character or location.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Character or location name the player wants information baout, defaults to current location.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FTE.world.World._command_talk">
+<span class="sig-name descname"><span class="pre">_command_talk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">character_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#FTE.characters.Character" title="FTE.characters.Character"><span class="pre">Character</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/FTE/world.html#World._command_talk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.world.World._command_talk" title="Link to this definition">¶</a></dt>
+<dd><p>Tries to talk to a <a class="reference internal" href="#FTE.characters.Character" title="FTE.characters.Character"><code class="xref py py-class docutils literal notranslate"><span class="pre">FTE.characters.Character</span></code></a>.
+The character must:</p>
+<ul class="simple">
+<li><p>exist,</p></li>
+<li><p>be in the player’s location,</p></li>
+<li><p>be pokable.</p></li>
+</ul>
+<p>If no name is specified, nothing happens.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>character_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The character’s name to which player is trying to talk.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The character player is trying to talk. <cite>None</cite> if the character doesn’t meet above requirements.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#FTE.characters.Character" title="FTE.characters.Character"><code class="xref py py-class docutils literal notranslate"><span class="pre">FTE.characters.Character</span></code></a> or <cite>None</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FTE.world.World._do_first_interaction">
+<span class="sig-name descname"><span class="pre">_do_first_interaction</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/FTE/world.html#World._do_first_interaction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.world.World._do_first_interaction" title="Link to this definition">¶</a></dt>
+<dd><p>Displays basic information how to play and asks if player needs additional help.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FTE.world.World._prefix">
+<span class="sig-name descname"><span class="pre">_prefix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/FTE/world.html#World._prefix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.world.World._prefix" title="Link to this definition">¶</a></dt>
+<dd><p>Displays before game console’s input field with current location’s name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FTE.world.World._prefix_help">
+<span class="sig-name descname"><span class="pre">_prefix_help</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/FTE/world.html#World._prefix_help"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.world.World._prefix_help" title="Link to this definition">¶</a></dt>
+<dd><p>Displays before game console’s input field inside help menu/mode.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FTE.world.World._show_location_characters">
+<span class="sig-name descname"><span class="pre">_show_location_characters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/FTE/world.html#World._show_location_characters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.world.World._show_location_characters" title="Link to this definition">¶</a></dt>
+<dd><p>Displays characters count and list in player’s location.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FTE.world.World._show_other_locations">
+<span class="sig-name descname"><span class="pre">_show_other_locations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/FTE/world.html#World._show_other_locations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.world.World._show_other_locations" title="Link to this definition">¶</a></dt>
+<dd><p>Displays count and list of available locations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FTE.world.World.assistant">
+<span class="sig-name descname"><span class="pre">assistant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Text</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/FTE/world.html#World.assistant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.world.World.assistant" title="Link to this definition">¶</a></dt>
+<dd><p>Displays additional help if the player requested it during the first <a class="reference internal" href="#FTE.world.World.interaction" title="FTE.world.World.interaction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FTE.world.World.interaction()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> or <code class="xref py py-class docutils literal notranslate"><span class="pre">rich.text.Text</span></code>) – The text to display.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FTE.world.World.character_enters">
+<span class="sig-name descname"><span class="pre">character_enters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">character</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#FTE.characters.Character" title="FTE.characters.Character"><span class="pre">Character</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">silently</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/FTE/world.html#World.character_enters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.world.World.character_enters" title="Link to this definition">¶</a></dt>
+<dd><p>Moves a character to player’s current location.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>character</strong> (<a class="reference internal" href="#FTE.characters.Character" title="FTE.characters.Character"><code class="xref py py-class docutils literal notranslate"><span class="pre">FTE.characters.Character</span></code></a>) – The character to move.</p></li>
+<li><p><strong>silently</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>) – If player should know about the character’s entrance.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FTE.world.World.character_in_global">
+<span class="sig-name descname"><span class="pre">character_in_global</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/FTE/world.html#World.character_in_global"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.world.World.character_in_global" title="Link to this definition">¶</a></dt>
+<dd><p>Checks if character exists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Target character’s name.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><cite>True</cite> if character exists, <cite>False</cite> otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FTE.world.World.character_in_location">
+<span class="sig-name descname"><span class="pre">character_in_location</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/FTE/world.html#World.character_in_location"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.world.World.character_in_location" title="Link to this definition">¶</a></dt>
+<dd><p>Checks if character is in the same location.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Target character’s name.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><cite>True</cite> if character is in the same location as the player, <cite>False</cite> otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FTE.world.World.character_leaves">
+<span class="sig-name descname"><span class="pre">character_leaves</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">character</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#FTE.characters.Character" title="FTE.characters.Character"><span class="pre">Character</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">goes_to</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#FTE.locations.Location" title="FTE.locations.Location"><span class="pre">Location</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">silently</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/FTE/world.html#World.character_leaves"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.world.World.character_leaves" title="Link to this definition">¶</a></dt>
+<dd><p>Moves a character to another location.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>character</strong> (<a class="reference internal" href="#FTE.characters.Character" title="FTE.characters.Character"><code class="xref py py-class docutils literal notranslate"><span class="pre">FTE.characters.Character</span></code></a>) – The character to move.</p></li>
+<li><p><strong>goes_to</strong> (<a class="reference internal" href="#FTE.locations.Location" title="FTE.locations.Location"><code class="xref py py-class docutils literal notranslate"><span class="pre">FTE.locations.Location</span></code></a>) – Where the character will move.</p></li>
+<li><p><strong>silently</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code> or <cite>None</cite>) – If player should know about the character’s leave.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="FTE.world.World.characters">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">characters</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#FTE.characters.Character" title="FTE.characters.Character"><span class="pre">Character</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#FTE.world.World.characters" title="Link to this definition">¶</a></dt>
+<dd><p>All characters in player’s current location.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FTE.world.World.find_character">
+<span class="sig-name descname"><span class="pre">find_character</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#FTE.characters.Character" title="FTE.characters.Character"><span class="pre">Character</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/FTE/world.html#World.find_character"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.world.World.find_character" title="Link to this definition">¶</a></dt>
+<dd><p>Tries to find a character in all characters by it’s name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The character’s name to be found.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The character if it’s found, <cite>None</cite> otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#FTE.characters.Character" title="FTE.characters.Character"><code class="xref py py-class docutils literal notranslate"><span class="pre">FTE.characters.Character</span></code></a> or <cite>None</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FTE.world.World.find_location">
+<span class="sig-name descname"><span class="pre">find_location</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#FTE.locations.Location" title="FTE.locations.Location"><span class="pre">Location</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/FTE/world.html#World.find_location"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.world.World.find_location" title="Link to this definition">¶</a></dt>
+<dd><p>Tries to find a location in all locations by its’ name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The location’s name to be found.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The location if it’s found, <cite>None</cite> otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#FTE.locations.Location" title="FTE.locations.Location"><code class="xref py py-class docutils literal notranslate"><span class="pre">FTE.locations.Location</span></code></a> or <cite>None</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FTE.world.World.interaction">
+<span class="sig-name descname"><span class="pre">interaction</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#FTE.characters.Character" title="FTE.characters.Character"><span class="pre">Character</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#FTE.locations.Location" title="FTE.locations.Location"><span class="pre">Location</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/FTE/world.html#World.interaction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#FTE.world.World.interaction" title="Link to this definition">¶</a></dt>
+<dd><p>The main game logic. Controls interactions between the player and world.
+For example talking to characters and going to locations.
+At first time game asks player if they want to enable assistant (<a class="reference internal" href="#FTE.world.World.assistant" title="FTE.world.World.assistant"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FTE.world.World.assistant()</span></code></a>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The object with wich player got with interaction. <cite>None</cite> if doesn’t apply.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#FTE.characters.Character" title="FTE.characters.Character"><code class="xref py py-class docutils literal notranslate"><span class="pre">FTE.characters.Character</span></code></a>, <a class="reference internal" href="#FTE.locations.Location" title="FTE.locations.Location"><code class="xref py py-class docutils literal notranslate"><span class="pre">FTE.locations.Location</span></code></a>, or <cite>None</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="FTE.world.World.location">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">location</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#FTE.locations.Location" title="FTE.locations.Location"><span class="pre">Location</span></a></em><a class="headerlink" href="#FTE.world.World.location" title="Link to this definition">¶</a></dt>
+<dd><p>Player’s current location. Displays <code class="docutils literal notranslate"><span class="pre">&quot;???&quot;</span></code> if location is not known by the player.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-FTE">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-FTE" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">FTE package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-FTE.characters">FTE.characters module</a><ul>
+<li><a class="reference internal" href="#FTE.characters.Character"><code class="docutils literal notranslate"><span class="pre">Character</span></code></a><ul>
+<li><a class="reference internal" href="#FTE.characters.Character.action"><code class="docutils literal notranslate"><span class="pre">Character.action()</span></code></a></li>
+<li><a class="reference internal" href="#FTE.characters.Character.dialogue"><code class="docutils literal notranslate"><span class="pre">Character.dialogue()</span></code></a></li>
+<li><a class="reference internal" href="#FTE.characters.Character.display_name"><code class="docutils literal notranslate"><span class="pre">Character.display_name</span></code></a></li>
+<li><a class="reference internal" href="#FTE.characters.Character.monologue"><code class="docutils literal notranslate"><span class="pre">Character.monologue()</span></code></a></li>
+<li><a class="reference internal" href="#FTE.characters.Character.pokable"><code class="docutils literal notranslate"><span class="pre">Character.pokable</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#FTE.characters.Standing"><code class="docutils literal notranslate"><span class="pre">Standing</span></code></a><ul>
+<li><a class="reference internal" href="#FTE.characters.Standing.BAD"><code class="docutils literal notranslate"><span class="pre">Standing.BAD</span></code></a></li>
+<li><a class="reference internal" href="#FTE.characters.Standing.GOOD"><code class="docutils literal notranslate"><span class="pre">Standing.GOOD</span></code></a></li>
+<li><a class="reference internal" href="#FTE.characters.Standing.NEUTRAL"><code class="docutils literal notranslate"><span class="pre">Standing.NEUTRAL</span></code></a></li>
+<li><a class="reference internal" href="#FTE.characters.Standing.color"><code class="docutils literal notranslate"><span class="pre">Standing.color</span></code></a></li>
+<li><a class="reference internal" href="#FTE.characters.Standing.color_text"><code class="docutils literal notranslate"><span class="pre">Standing.color_text</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-FTE.console">FTE.console module</a></li>
+<li><a class="reference internal" href="#module-FTE.locations">FTE.locations module</a><ul>
+<li><a class="reference internal" href="#FTE.locations.Location"><code class="docutils literal notranslate"><span class="pre">Location</span></code></a><ul>
+<li><a class="reference internal" href="#FTE.locations.Location.display_name"><code class="docutils literal notranslate"><span class="pre">Location.display_name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-FTE.menus">FTE.menus module</a><ul>
+<li><a class="reference internal" href="#FTE.menus.main_menu"><code class="docutils literal notranslate"><span class="pre">main_menu()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-FTE.settings">FTE.settings module</a></li>
+<li><a class="reference internal" href="#module-FTE.utils">FTE.utils module</a><ul>
+<li><a class="reference internal" href="#FTE.utils.print_with_interval"><code class="docutils literal notranslate"><span class="pre">print_with_interval()</span></code></a></li>
+<li><a class="reference internal" href="#FTE.utils.slow_print"><code class="docutils literal notranslate"><span class="pre">slow_print()</span></code></a></li>
+<li><a class="reference internal" href="#FTE.utils.slower_print"><code class="docutils literal notranslate"><span class="pre">slower_print()</span></code></a></li>
+<li><a class="reference internal" href="#FTE.utils.story"><code class="docutils literal notranslate"><span class="pre">story()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-FTE.world">FTE.world module</a><ul>
+<li><a class="reference internal" href="#FTE.world.Command"><code class="docutils literal notranslate"><span class="pre">Command</span></code></a><ul>
+<li><a class="reference internal" href="#FTE.world.Command.usage"><code class="docutils literal notranslate"><span class="pre">Command.usage</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#FTE.world.UnknownCharacter"><code class="docutils literal notranslate"><span class="pre">UnknownCharacter</span></code></a></li>
+<li><a class="reference internal" href="#FTE.world.UnknownCommand"><code class="docutils literal notranslate"><span class="pre">UnknownCommand</span></code></a></li>
+<li><a class="reference internal" href="#FTE.world.UnknownLocation"><code class="docutils literal notranslate"><span class="pre">UnknownLocation</span></code></a></li>
+<li><a class="reference internal" href="#FTE.world.World"><code class="docutils literal notranslate"><span class="pre">World</span></code></a><ul>
+<li><a class="reference internal" href="#FTE.world.World._character_in"><code class="docutils literal notranslate"><span class="pre">World._character_in()</span></code></a></li>
+<li><a class="reference internal" href="#FTE.world.World._command_exit"><code class="docutils literal notranslate"><span class="pre">World._command_exit()</span></code></a></li>
+<li><a class="reference internal" href="#FTE.world.World._command_go"><code class="docutils literal notranslate"><span class="pre">World._command_go()</span></code></a></li>
+<li><a class="reference internal" href="#FTE.world.World._command_help"><code class="docutils literal notranslate"><span class="pre">World._command_help()</span></code></a></li>
+<li><a class="reference internal" href="#FTE.world.World._command_info"><code class="docutils literal notranslate"><span class="pre">World._command_info()</span></code></a></li>
+<li><a class="reference internal" href="#FTE.world.World._command_talk"><code class="docutils literal notranslate"><span class="pre">World._command_talk()</span></code></a></li>
+<li><a class="reference internal" href="#FTE.world.World._do_first_interaction"><code class="docutils literal notranslate"><span class="pre">World._do_first_interaction()</span></code></a></li>
+<li><a class="reference internal" href="#FTE.world.World._prefix"><code class="docutils literal notranslate"><span class="pre">World._prefix()</span></code></a></li>
+<li><a class="reference internal" href="#FTE.world.World._prefix_help"><code class="docutils literal notranslate"><span class="pre">World._prefix_help()</span></code></a></li>
+<li><a class="reference internal" href="#FTE.world.World._show_location_characters"><code class="docutils literal notranslate"><span class="pre">World._show_location_characters()</span></code></a></li>
+<li><a class="reference internal" href="#FTE.world.World._show_other_locations"><code class="docutils literal notranslate"><span class="pre">World._show_other_locations()</span></code></a></li>
+<li><a class="reference internal" href="#FTE.world.World.assistant"><code class="docutils literal notranslate"><span class="pre">World.assistant()</span></code></a></li>
+<li><a class="reference internal" href="#FTE.world.World.character_enters"><code class="docutils literal notranslate"><span class="pre">World.character_enters()</span></code></a></li>
+<li><a class="reference internal" href="#FTE.world.World.character_in_global"><code class="docutils literal notranslate"><span class="pre">World.character_in_global()</span></code></a></li>
+<li><a class="reference internal" href="#FTE.world.World.character_in_location"><code class="docutils literal notranslate"><span class="pre">World.character_in_location()</span></code></a></li>
+<li><a class="reference internal" href="#FTE.world.World.character_leaves"><code class="docutils literal notranslate"><span class="pre">World.character_leaves()</span></code></a></li>
+<li><a class="reference internal" href="#FTE.world.World.characters"><code class="docutils literal notranslate"><span class="pre">World.characters</span></code></a></li>
+<li><a class="reference internal" href="#FTE.world.World.find_character"><code class="docutils literal notranslate"><span class="pre">World.find_character()</span></code></a></li>
+<li><a class="reference internal" href="#FTE.world.World.find_location"><code class="docutils literal notranslate"><span class="pre">World.find_location()</span></code></a></li>
+<li><a class="reference internal" href="#FTE.world.World.interaction"><code class="docutils literal notranslate"><span class="pre">World.interaction()</span></code></a></li>
+<li><a class="reference internal" href="#FTE.world.World.location"><code class="docutils literal notranslate"><span class="pre">World.location</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-FTE">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="modules.html"
+                          title="previous chapter">FTE</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="FTE.chapters.html"
+                          title="next chapter">FTE.chapters package</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/_FTE_autodoc/FTE.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="FTE.chapters.html" title="FTE.chapters package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="FTE"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Fix The Engines 0.4.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >FTE</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">FTE package</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2024, Jakub Suchenek, Michał Gołębiewski.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    </div>
+  </body>
+</html>
