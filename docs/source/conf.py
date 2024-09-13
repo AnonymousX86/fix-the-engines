@@ -15,7 +15,7 @@ sys_path.insert(0, os_path.abspath(os_path.join('..', '..')))
 project = 'Fix The Engines'
 copyright = '2024, Jakub Suchenek, Michał Gołębiewski'
 author = 'Jakub Suchenek, Michał Gołębiewski'
-release = '0.1.1'
+release = '0.4.0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
